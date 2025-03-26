@@ -1,0 +1,10 @@
+--- 'Hard-Coded' views code of service_list view for construction project ---
+
+service_cards = [ {'images' : 'img/10276.jpg', 'title' : 'Resedential Construction', 'time' : 'Last updated 3 mins ago' , 'about' : 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'},
+                     {'images' : 'img/modern_onsite.jpg', 'title' : 'Commercial Construction', 'time' : 'Last updated 3 mins ago' , 'about' : 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'},
+                     {'images' : 'img/kitchen-interior.jpg', 'title' : 'Renovation', 'time' : 'Last updated 3 mins ago' , 'about' : 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'},
+                     {'images' : 'img/architect-blueprint.jpg', 'title' : 'Building Planning / Blueprints', 'time' : 'Last updated 3 mins ago' , 'about' : 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'} 
+                    ]
+    return render(request, 'services.html', {'breadcrumb': breadCrumb, 'service_cards' : service_cards, 'services': var_services})
+
+<i class="bi bi-grid-fill"></i>

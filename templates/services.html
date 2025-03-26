@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}     {% comment %} This file contains images, to load images from static folder we use {% load static %} here! {% endcomment %}
+{% block content %}
+<!-- Breadcrumbs start -->
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider:'/'; margin-top:50px" class="b-crumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin_panel">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{breadcrumb}}</li>     <!-- <i class="bi bi-folder2"></i> -->
+  </ol>
+</nav><br><br>
+<!-- Breadcrumbs end -->
+
+<!-- Services Starts -->
+<section>
+    {% for serv_card in service_cards %}
+    <div class="card mb-3 container" style="width: 700px;">
+      <span hidden>{{forloop.counter}}</span>
+      <img src={{ serv_card.images }} class="card-img-top card-img" alt={{ serv_card.title }} style="width: 60%; height:300px;padding:25px 5px 5px 5px;">
+      <div class="card-body">
+        <h5 class="card-title">{{ serv_card.title }}</h5>
+        <p class="card-text">{{serv_card.description}}</p>
+        <p class="card-text"><small class="text-muted">{{serv_card.time}}</small></p>
+      </div>
+    </div>
+    {% endfor %}
+</section>
+<!-- Services Ends -->
+{% endblock %}

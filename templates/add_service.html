@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Project</title>
+    <!-- <link rel="stylesheet" href="admin.css"> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<style>
+  @media (min-width: 992px) {
+    .navbar-nav-center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .btn-small{
+    height: 35px;
+    width:90px;
+    padding:0px;
+    }
+}
+</style>
+
+<body>
+
+<!-- navbar starts -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e4faff;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MRB Construction</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll navbar-nav-center" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/admin_panel">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/report">Reports</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/documents">Documents</a>
+          </li>
+          
+        </ul>
+        <form class="d-flex">
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+          <button class="btn btn-outline-success btn-small" type="button" style="background-color: #0d6efd;" onclick="location.href='LoginPage.html'">
+            <span class="nav-link small-txt" style="font-size:15px;padding:0px;color:#ffffff;"><b>Log Out</b></span>
+          </button></form>
+      </div>
+    </div>
+</nav><br><br>
+<!-- navbar ends -->
+<div class="content">
+<br><br> 
+
+<!-- Form Starts -->
+<div class="container form-container mt-5">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} 
+        <div class="mb-3">
+            <label for="servicetName" class="form-label">Service Name</label>
+            <input type="text" class="form-control" id="serviceName" placeholder="Enter project name" name="service_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="servicePhoto" class="form-label">Add Photo</label>
+            <input type="file" class="form-control" id="servicePhoto" name="service_image" required>
+        </div>
+        <div class="mb-3">
+            <label for="serviceDetails" class="form-label">Service Details</label>
+            <textarea class="form-control" id="serviceDetails" rows="3" placeholder="Enter project details" name="service_description" ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<!-- Form ends -->
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

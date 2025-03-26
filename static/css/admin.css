@@ -1,0 +1,153 @@
+body {
+  display: flex;
+  font-family: var(--bs-font-sans-serif);
+  background-color: #84c0ec;
+}
+.sidebar {
+  width: 250px;
+  /* background-color: #fdfbfa; */
+  /* background-color: #f8f9fa; */
+  padding: 15px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  transition: width 0.3s;
+}
+.sidebar.collapsed{
+  width:70px;
+  padding:15px 5px;
+}
+.sidebar.collapsed .sidebar-content{
+  display:none;
+}
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  width: calc(100% - 250px);
+  transition: margin-left 0.3s, width 0.3s;
+}
+.content.collapsed .b-crumb{
+  margin-left: 85px;
+} 
+.content.collapsed {
+  margin-left: 20px;
+  width: calc(100% - 20px);
+}
+.toggle-button {
+  display: block;
+  margin-bottom: 15px;
+  position: absolute;
+  top: 4px;
+  left: 180px;
+  z-index: 1000;
+}
+.sidebar.collapsed .toggle-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  z-index: 1000;
+}
+.sidebar-content a{
+  text-decoration: none;
+}
+.sidebar{
+  margin-top: 56px;
+}
+/* Dashboard Starts   */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  margin-bottom: 30px;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+.card a{
+  color:#0d6efd;
+}
+.card a:hover{
+  color:#000;
+}
+.l-bg-cherry {
+  /* background: linear-gradient(to right, #73395d, s#f09) !important; */
+  color: #0a504a;
+}
+
+.l-bg-blue-dark {
+  /* background: linear-gradient(to right, #373b44, #4286f4) !important; */
+  color: #0a504a;
+}
+
+.l-bg-green-dark {
+  /* background: linear-gradient(to right, #0a504a, #3fe67f) !important; */
+  color: #0a504a;
+}
+
+.l-bg-orange-dark {
+  /* background: linear-gradient(to right, #a86008, #ffba56) !important; */
+  color: #0a504a;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+  font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+  text-align: center;
+  line-height: 50px;
+  margin-left: 15px;
+  color: #000;
+  position: absolute;
+  right: -5px;
+  top: 20px;
+  opacity: 0.1;
+}
+.card-title i{
+  margin:0 0 5px 5px;
+}
+  
+
+.l-bg-cyan {
+  background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+  color: #fff;
+}
+
+.l-bg-green {
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+  color: #fff;
+}
+
+.l-bg-orange {
+  background: linear-gradient(to right, #f9900e, #ffba56) !important;
+  color: #fff;
+}
+
+.l-bg-cyan2 {
+  background: linear-gradient(135deg, #0783dd, #81bef0) !important;
+  color: #fff;
+}
+
+/* Dashboard  Ends */
+/* @media (min-width: 992px) {
+  .navbar .navbar-expand-lg .navbar-light .bg-light{
+    position: fixed;
+    z-index: 1000;
+  }
+} */
+
+.ftr{
+  background-color: #e0491f;
+}
+
+@media (min-width: 992px) {
+    .navbar-nav-center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .btn-small{
+    height: 35px;
+    width:90px;
+    padding:0px;
+    }
+}

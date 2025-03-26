@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Breadcrumbs start -->
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider:'/'; margin-top:50px" class="b-crumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admin_panel">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{breadcrumb.val}}</li>
+    </ol>
+  </nav><br><br>
+  <!-- Breadcrumbs end -->
+
+<!-- Report Content -->
+<div class="container section-title w">
+  <h3>Project Report <i class="bi bi-clipboard-data"></i> </h3><br><br><hr>
+
+    <div class="row">
+      <div class="col-lg-6">
+          <p><strong>Project Name: </strong>{{project.project_name}}</p>
+          <p><strong>Location: </strong>{{project.project_location}}</p>
+          <p><strong>Started: </strong>{{project.starting_date}}</p>
+          {% comment %} <p><strong>End Date:</strong>{{project.ending_date}}</p> {% endcomment %}
+          <p><strong>Status: </strong><mark style="background-color:beige;">{{project.status}}</mark></p>
+
+      </div>
+      <div class="col-lg-6">
+          <p><strong>Client Name: </strong>{{project.client_name}}</p>
+          <p><strong>Client Email: </strong>{{project.client_mail}}</p>
+          <p><strong>Client Contact: </strong>{{project.client_contact}}</p>
+          <p><strong>Estimated Budget: </strong>{{project.budget}}</p>
+      </div>
+    </div>
+
+{% comment %} <!-- Inquiries Section -->
+      <div class="section-title">
+          <h4>Related Inquiries</h4>
+      </div>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Inquiry</th>
+                  <th scope="col">Date & Time</th>
+                  <th scope="col">Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th scope="row">1</th>
+                  <td>What is the current status of the project?</td>
+                  <td>01/15/2023 10:30 AM</td>
+                  <td>Resolved</td>
+              </tr>
+              <!-- Add more rows as needed -->
+          </tbody>
+      </table>
+  </div>
+<!-- Report Content Ends --> {% endcomment %}
+{% endblock %}

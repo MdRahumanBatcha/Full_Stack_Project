@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Breadcrumbs start -->
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider:'/'; margin-top:50px" class="b-crumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin_panel">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{breadcrumb}}</li>
+  </ol>
+</nav><br>
+<!-- Breadcrumbs end -->
+
+<!-- Table Content Starts -->
+<div class="container mt-3">
+  <div class="table-responsive">
+    <table class="table table-borderd">
+      <thead class="thead-dark">
+        <tr style="background-color: cornflowerblue;color:#ffffff">
+          <th scope="col">ID</th>
+          <th scope="col">Project Name</th>
+          <th scope="col">Client</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Location</th>
+          <th scope="col">Budget</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr> 
+      </thead>
+      <tbody>
+      {% if project_datas %} 
+        {% for project in  project_datas %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ project.project_name }}</td>
+          <td>{{ project.client_name }}</td>
+          <td>{{ project.client_contact }}</td>
+          <td>{{ project.project_location }}</td>
+          <td>{{ project.budget }}</td>
+          <td>{{ project.status }}</td>
+          <td><div class="btn-group" role="group" aria-label="Basic example">     
+          <a href="{% url 'reports' project.id %}" class="btn btn-primary"><i class="bi bi-eye-fill"></i></a>
+          <form type="POST" action="{% url 'delete_project' project.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+        </tr>
+
+          {% comment %} <tr>
+            <td>2</td>
+            <td>Residential Project</td>
+            <td>Client B</td>
+            <td>lorem</td>
+            <td>$40,000</td>
+            <td>Active</td>
+            <td><a href="/reports" class="btn btn-primary">View Reports</a></td>
+            <!-- <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">View Reports</a></button> -->
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>Rebuild Project</td>
+            <td>Client C</td>
+            <td>lorem ipsum</td>
+            <td>$1,000</td>
+            <td>Not Started</td>
+            <!-- <td><a href="/reports.html?project_id=125" class="btn btn-primary">View Reports</a></td> -->
+            <td><a href="/reports" class="btn btn-primary">View Reports</a></td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>Interior Project</td>
+            <td>Client D</td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>$1,000</td>
+            <td>Not Started</td>
+            <!-- <td><a href="/reports.html?project_id=126" class="btn btn-primary">View Reports</a></td> -->
+            <!-- <td><a href="reports.html" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">View Reports</a></button> -->
+            <td><a href="/reports" class="btn btn-primary">View Reports</a></td>
+          </tr> {% endcomment %}
+        </tbody>
+        {% comment %} <tfoot>
+          <tr style="background-color: bisqu;">
+            <td colspan="6"></td>
+              <td colspan="2">
+                <nav aria-label="Page navigation example" style="margin-left:50px;">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a>
+                    </li>
+                  </ul>
+                  </nav>
+                  </td>
+                </tr>
+        </tfoot> {% endcomment %}
+        {% endfor %}
+      {% else %}
+          <p> <i>No Projects were Added by <b>ADMIN (You)</b></i>  
+      
+      {% endif %}
+    </table>
+<!--Messages-->
+    {% if messages %}
+<div class="container" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; padding: 10px; border-radius: 5px;">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+<!--Messages-->
+  </div>
+</div><br>
+<!--_______________________________________________________________ Table Content Ends _______________________________________________________________-->
+
+{% comment %} <!-- Second Breadcrumbs start -->
+<h2 id="inquiries">Client Inquiries</h2>
+<!-- Breadcrumbs end -->
+
+<!-- Client Inquiries Starts-->
+<div class="container mt-5"> <!-- style="border:1px solid black;padding:10px 0;background-color:bisque"-->
+  <div class="table-responsive">
+      <table class="table table-borderd">
+          <thead class="thead-dark">
+              <tr style="background-color: cornflowerblue;color:white">
+                <th colspan="5" style="padding-bottom: 30px;">Inbox</th>
+                <th colspan="2" style="padding-top: 25px;"><div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" placeholder="Search by Name / ID" aria-label="Username" aria-describedby="basic-addon1">
+                </div></th>
+              </tr>
+              <tr>
+                  <th scope="col">Inquiry ID</th>
+                  <th scope="col">Sender Name</th>
+                  <th scope="col">Email/Phone</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Received Date</th>
+                  <th scope="col">Respond</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>011 <input type="checkbox"></td>
+                  <td>Madara Uchiha</td>
+                  <td>7687666872</td>
+                  <td>Ghost of the Uchiha</td>
+                  <td>New</td>
+                  <td><input type="date"></td>
+                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Respond</button>
+                    <button class="btn btn-danger">Delete</button></td>
+                  <!-- <td><button><a href="view_project.html">View Details</button></a></td> -->
+              </tr>
+
+              <tr>
+                <td>012 <input type="checkbox"></td>
+                <td>Hashirama Senju</td>
+                <td>7462378461</td>
+                <td>God of Shinobi</td>
+                <td>Pending</td>
+                <td><input type="date"></td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Respond</button>
+                  <button class="btn btn-danger">Delete</button></td>
+                <!-- <td><button><a href="view_project.html">View Details</button></a></td> -->
+            </tr>
+
+            <tr>
+              <td>013 <input type="checkbox"></td>
+              <td>Minato Namikaze</td>
+              <td>9862378461</td>
+              <td>Yellow Flash</td>
+              <td>Resolved</td>
+              <td><input type="date"></td>
+              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Respond</button>
+                <button class="btn btn-danger">Delete</button></td>
+              <!-- <td><button><a href="view_project.html">View Details</button></a></td> -->
+          </tr>
+            </tbody>
+      </table>    
+  </div>
+</div>
+<!-- Client Inquiries Ends-->
+
+<!-- Modal Starts -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Ends --> {% endcomment %}
+
+{% endblock %}

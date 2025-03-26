@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <div class="container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <p class="heading">Login in</p>
+        <form method="POST">
+        {% csrf_token %}
+        <div class="box">
+            <p>Email</p>
+            <div>
+                <input type="text" name="username" id="" placeholder="Enter Your Email" > 
+            </div>
+        </div>
+        <div class="box">
+            <p>Password</p>
+            <div>
+                <input type="password" name="password" id="" placeholder="Enter Your Password" > 
+            </div>
+        </div> 
+        <button class="loginBtn" type="submit"><span>Login</span></button> 
+        </form>
+        {% comment %} <p class="text">Dont have an account? <a href="#">Sign up</a></p> {% endcomment %}
+    </div>
+</body>
+</html>
