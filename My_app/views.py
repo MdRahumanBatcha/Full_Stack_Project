@@ -79,7 +79,7 @@ def delete_project(request, project_id):
 def service_list(request):
     var_services = Service.objects.all()
     breadCrumb = 'Services'
-    service_cards = [ {'images' : service.service_image.url,
+    service_cards = [ {'images' : service.service_image.url if service.service_image else 'default_image.jpg',
                        'title' : service.service_name,
                        'time' : 'Last updated 3 mins ago',
                        'description' : service.service_description} 
